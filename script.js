@@ -7,10 +7,22 @@ let personalMovieDB = {
   genres: [],
   privat: false,
 };
-let lastMovie = prompt("Один из последних просмотренных фильмов?", "");
-let gradeMovie = prompt("На сколько оцените его?", "10");
-let lastMovie2 = prompt("Один из последних просмотренных фильмов?", "");
-let gradeMovie2 = prompt("На сколько оцените его?", "10");
-personalMovieDB.movies[lastMovie] = gradeMovie;
-personalMovieDB.movies[lastMovie2] = gradeMovie2;
+
+for (let i = 0; i < 2; i++) {
+  let lastMovie = prompt("Один из последних просмотренных фильмов?", "");
+  let gradeMovie = prompt("На сколько оцените его?", "10");
+  if (
+    lastMovie == "" ||
+    lastMovie == null ||
+    lastMovie.length > 50 ||
+    gradeMovie == "" ||
+    gradeMovie == null ||
+    gradeMovie.length > 50
+  ) {
+    i--;
+    continue;
+  }
+  personalMovieDB.movies[lastMovie] = gradeMovie;
+}
+
 console.log(personalMovieDB);
